@@ -5,8 +5,8 @@
 ```git clone [このgithubのurl](https://github.com/kznit/AbsentMailer.git)```
 
 ## 使用パッケージのインストール方法
-```gem install mail -v 2.7.1```
-  最新版のmailでは使用しているrubyのバージョンとの相性が悪く，エラーが出るためバージョンを落としています．
+```gem install mail -v 2.7.1```  
+最新版のmailでは使用しているrubyのバージョンとの相性が悪く，エラーが出るためバージョンを落としています．
 ```gem install thor```
 
 ## 使用方法
