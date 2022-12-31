@@ -1,0 +1,129 @@
+#!/usr/bin/env ruby
+# coding: utf-8
+require 'optparse'
+require "mail"
+
+require 'rubygems'
+require 'thor'
+
+
+
+
+
+def mail(adr, n, rsn)
+  t=Time.new
+  address = adr
+  name = n
+  reason = rsn
+
+  from   = 'kazuta.1001.daikou@gmail.com'
+  password = 'plxhpfwowosprwzw'
+  to = address
+
+  Mail.defaults do
+    delivery_method :smtp, {
+                      address: 'smtp.gmail.com',
+                      port: 587,
+                      domain: 'example.com',
+                      user_name: from,
+                      password: password,
+                      authentication: :login,
+                      enable_starttls_auto: true
+                    }
+  end
+
+  #opt.on('-t', '--tomorrow') { subject = "欠席連絡#{t.next_month }月#{t.tomorrow}日新田一輝"}
+  #opt.on('-n', '--now') { subject = "欠席連絡#{t.month}月#{t.day}日新田一輝"}
+
+
+  m = Mail.new do
+    from "#{from}"
+    to "#{to}"
+    subject "欠席連絡#{t.month}月#{t.day}日新田一輝"
+    body "#{name}教授，お世話になっております．
+M2の新田です
+本日，#{reason}のため欠席します．"
+  end
+
+  m.charset = "UTF-8"
+  m.content_transfer_encoding = "8bit"
+  m.deliver
+end
+
+
+def reasonList
+  option :stomach_ache, :type => :boolean, :aliases => '-s', :desc => "reason:腹痛"
+  option :cold, :type => :boolean, :aliases => '-c', :desc => "reason:風邪気味"
+  option :headache, :type => :boolean, :aliases => '-h', :desc => "reason:頭痛"
+  option :toothache, :type => :boolean, :aliases => '-t', :desc => "reason:歯痛"
+  option :go_hospital, :type => :boolean, :aliases => '-g', :desc => "reason:通院"
+  option :injury, :type => :boolean, :aliases => '-i', :desc => "reason:怪我"
+  option :fether_rest, :type => :boolean, :aliases => '-f', :desc => "reason:羽休め"
+
+end
+
+
+
+
+def option(adr,n,options)
+  if options[:stomach_ache]
+    mail adr,n,"腹痛"
+  elsif options[:cold]
+    mail adr,n,"風邪気味"
+  elsif options[:headache]
+    mail adr,n,"頭痛"
+  elsif options[:toothache]
+    mail adr,n,"歯痛"
+  elsif options[:go_hospital]
+    mail adr,n,"通院"
+  elsif options[:injury]
+    mail adr,n,"怪我"
+  elsif options[:fether_rest]
+    mail adr,n,"羽休め"
+  else
+    mail adr,n,"用事"
+  end
+end
+
+
+  
+
+
+class AbsentMail < Thor
+  
+  class_option :help, :type => :boolean, :aliases => '-H', :desc => 'Help message.'
+  
+  reasonList
+  desc "Nishitani [option]", "Mail to Nishitani. Default reason : 用事"
+  def Nishitani
+    adr="gliland.1001@gmail.com"
+    n="西谷"
+    option adr,n,options
+  end
+  
+  reasonList
+  desc "Tanaka [option]", "Mail to Tanaka. Default reason : 用事"
+  def Tanaka
+    adr="tekkyonsan.mizu.nondeiidesuka@gmail.com"
+    n="田中"
+    option adr,n,options
+  end
+  
+  reasonList
+  desc "Okehazama [option]", "Mail to Okehazama. Default reason : 用事"
+  def Okehazama
+    adr="apex.pad.1001@gmail.com"
+    n="桶狭間"
+    option adr,n,options
+  end
+  
+  reasonList
+  desc "Kangakujiromaru [option]", "Mail to Kangakujiromaru. Default reason : 用事"
+  def Kangaku
+    adr="kazuta.2002.daikou@gmail.com"
+    n="関学次郎丸"
+    option adr,n,options
+  end
+end
+
+AbsentMail.start
