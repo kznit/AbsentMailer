@@ -16,8 +16,8 @@ def mail(adr, n, rsn)
   name = n
   reason = rsn
 
-  from   = 'kazuta.1001.daikou@gmail.com'
-  password = 'plxhpfwowosprwzw'
+  from   = 'kazuta.1001.daikou@gmail.com'#自分のメールアドレス
+  password = 'plxhpfwowosprwzw'#自分のメールアドレスのアプリパスワード
   to = address
 
   Mail.defaults do
@@ -96,32 +96,32 @@ class AbsentMail < Thor
   reasonList
   desc "Nishitani [option]", "Mail to Nishitani. Default reason : 用事"
   def Nishitani
-    adr="gliland.1001@gmail.com"
-    n="西谷"
+    adr="gliland.1001@gmail.com"#教授のメールアドレス
+    n="西谷"#教授の名前
     option adr,n,options
   end
   
   reasonList
   desc "Tanaka [option]", "Mail to Tanaka. Default reason : 用事"
   def Tanaka
-    adr="tekkyonsan.mizu.nondeiidesuka@gmail.com"
-    n="田中"
+    adr="tekkyonsan.mizu.nondeiidesuka@gmail.com"#教授のメールアドレス
+    n="田中"#教授の名前
     option adr,n,options
   end
   
   reasonList
   desc "Okehazama [option]", "Mail to Okehazama. Default reason : 用事"
   def Okehazama
-    adr="apex.pad.1001@gmail.com"
-    n="桶狭間"
+    adr="apex.pad.1001@gmail.com"#教授のメールアドレス
+    n="桶狭間"#教授の名前
     option adr,n,options
   end
   
   reasonList
   desc "Kangakujiromaru [option]", "Mail to Kangakujiromaru. Default reason : 用事"
   def Kangaku
-    adr="kazuta.2002.daikou@gmail.com"
-    n="関学次郎丸"
+    adr="kazuta.2002.daikou@gmail.com"#教授のメールアドレス
+    n="関学次郎丸"#教授の名前
     option adr,n,options
   end
 end
