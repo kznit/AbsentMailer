@@ -2,7 +2,7 @@
 オプションで送信先と理由を指定して欠席メールのテンプレを送信します．このプログラムはruby2.7.0をインストールしたubuntuで作成しました．
 
 ## インストール方法
-```git clone [このgithubのurl](https://github.com/kznit/AbsentMailer.git)```
+```git clone https://github.com/kznit/AbsentMailer.git```
 
 ## 使用パッケージのインストール方法
 ```gem install mail -v 2.7.1```  
