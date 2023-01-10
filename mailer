@@ -16,8 +16,8 @@ def mail(adr, n, rsn)
   name = n
   reason = rsn
 
-  from   = 'kazuta.1001.daikou@gmail.com'#自分のメールアドレス
-  password = 'plxhpfwowosprwzw'#自分のメールアドレスのアプリパスワード
+  from   = '@gmail.com'#自分のメールアドレス
+  password = ''#自分のメールアドレスのアプリパスワード
   to = address
 
   Mail.defaults do
